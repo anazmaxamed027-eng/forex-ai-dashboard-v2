@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal AI - Forex Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: #0b0c10; color: #ffffff; padding: 20px; display: none; }
+        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0b0c10; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        .login-box { background: #151922; padding: 40px; border-radius: 12px; border: 1px solid #45f3ff; text-align: center; }
+        .login-box input { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 6px; border: 1px solid #232936; background: #1f2833; color: white; text-align: center; }
+        .login-box button { background: #45f3ff; color: #0b0c10; border: none; padding: 12px 30px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; }
+        .error-msg { color: #ff3366; margin-top: 10px; display: none; }
+        .ticker-wrap { width: 100%; background: #1f2833; overflow: hidden; padding: 10px 0; border-radius: 8px; margin-bottom: 20px; border: 1px solid #45f3ff; }
+        .ticker { display: flex; white-space: nowrap; animation: ticker 25s linear infinite; }
+        .ticker-item { padding: 0 2rem; font-size: 14px; font-weight: bold; }
+        @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        .header { margin-bottom: 30px; }
+        .logo { font-size: 24px; font-weight: bold; color: #45f3ff; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .card { background: #151922; border-radius: 12px; padding: 20px; border: 1px solid #232936; }
+        .card-title { font-size: 12px; color: #8a99ad; text-transform: uppercase; margin-bottom: 10px; }
+        .card-value { font-size: 24px; font-weight: bold; }
+        .vps-panel { grid-column: span 4; background: linear-gradient(135deg, #1f1c2c, #928dab); border: 1px solid #45f3ff; }
+        .vps-form { display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; }
+        .vps-form input { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 10px 15px; border-radius: 6px; color: white; flex: 1; min-width: 200px; }
+        .vps-form button { background: #45f3ff; color: #0b0c10; border: none; padding: 10px 25px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2>Signal AI Security</h2>
+            <p style="color: #8a99ad; margin-bottom: 15px;">Geli password-ka si aad u gasho Dashboard-ka</p>
+            <input type="password" id="pass-input" placeholder="Password-ka Geli">
+            <button onclick="checkPassword()">Open Dashboard</button>
+            <div class="error-msg" id="error-text">Password-ku waa khalad!</div>
+        </div>
+    </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item" style="color: #00ffcc;">BTC/USD: $94,250.00 (+2.4%)</div>
+            <div class="ticker-item" style="color: #00ffcc;">XAU/USD (Gold): $2,650.00 (+1.1%)</div>
+            <div class="ticker-item" style="color: #ff3366;">EUR/USD: 1.0850 (-0.12%)</div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="logo">SIGNAL AI</div>
+        <p style="color: #8a99ad;">Welcome to your Forex AI Agent Dashboard.</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card vps-panel">
+            <h3>🖥️ VPS Connection & AI Agent Setup</h3>
+            <div class="vps-form">
+                <input type="text" placeholder="VPS IP Address">
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button type="button">Connect Agent</button>
+            </div>
+        </div>
+
+        <div class="card"><div class="card-title">Today's Profit</div><div class="card-value" style="color: #00ffcc;">+$1,842.30</div></div>
+        <div class="card"><div class="card-title">Active AI Signals</div><div class="card-value">16</div></div>
+        <div class="card"><div class="card-title">AI Win Rate</div><div class="card-value" style="color: #45f3ff;">71.4%</div></div>
+        <div class="card"><div class="card-title">Account Balance</div><div class="card-value">$54,208.11</div></div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var passwordInput = document.getElementById("pass-input").value;
+            if (passwordInput === "pio54321") { 
+                document.getElementById("login-overlay").style.display = "none";
+                document.body.style.display = "block";
+            } else {
+                document.getElementById("error-text").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
