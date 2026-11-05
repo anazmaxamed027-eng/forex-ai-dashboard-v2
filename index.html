@@ -209,7 +209,6 @@
 
         .progress-fill { height: 100%; background: #ff007f; width: 76%; }
         .progress-fill.storage { background: #bc00dd; width: 82%; }
-        .progress-fill.memory { background: #00ffcc; width: 68%; }
 
         /* NOTIFICATIONS */
         .notifications-panel {
@@ -260,7 +259,7 @@
             <h2 style="color: #ff007f; margin-bottom: 5px;">SIGNAL AI SECURITY</h2>
             <p style="color: #8a99ad; margin-bottom: 15px; font-size: 12px;">Geli password-ka si aad u gasho</p>
             <input type="password" id="pass-input" placeholder="Geli Password-ka">
-            <button onclick="checkPassword()">OPEN DASHBOARD</button>
+            <button id="login-btn">OPEN DASHBOARD</button>
             <div id="error-text" style="color: #ff0055; margin-top: 10px; display: none; font-size: 12px;">Password-ku waa khalad!</div>
         </div>
     </div>
@@ -322,7 +321,7 @@
         <button class="nav-item">⚙️ Settings</button>
     </div>
 
-    <!-- 🔒 SECURE LOGIN SCRIPT -->
+    <!-- 🔒 HAGAAJINTA NIDAAMKA GUJINTA BADANKA -->
     <script>
-        function checkPassword() {
+        document.getElementById("login-btn").addEventListener("click", function() {
             var passwordInput = document.getElementById("pass-input").value;
