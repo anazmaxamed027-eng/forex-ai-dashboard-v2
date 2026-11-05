@@ -16,10 +16,10 @@
             background-color: #030308;
             color: #ffffff;
             padding: 12px;
-            padding-bottom: 90px; /* Booska bottom menu-ka hoose */
+            padding-bottom: 90px;
         }
 
-        /* 🔒 SYSTEM SECURITY LOCK (PASSWORD) */
+        /* 🔒 NIDAAMKA LOGIN-KA EE SAXDA AH */
         #login-overlay {
             position: fixed;
             top: 0;
@@ -66,7 +66,6 @@
             cursor: pointer;
             width: 100%;
             font-size: 15px;
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
         }
 
         /* 📈 LIVE TICKER BAR */
@@ -108,10 +107,9 @@
             border: 1px solid #ff007f;
             margin-bottom: 15px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.1);
         }
 
-        .logo-section h1 {
+        .header-container h1 {
             font-size: 24px;
             color: #ff007f;
             text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
@@ -124,7 +122,6 @@
             padding: 10px;
             border-radius: 10px;
             border: 1px solid #bc00dd;
-            display: inline-block;
             width: 100%;
         }
 
@@ -132,30 +129,15 @@
             font-size: 28px;
             font-weight: bold;
             color: #00ffcc;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
 
-        .clock-date {
-            font-size: 11px;
-            color: #8a99ad;
-            text-transform: uppercase;
-            margin-top: 3px;
-        }
-
-        /* 🖥️ VPS & MT5 CONFIGURATION PANEL */
+        /* 🖥️ VPS PANEL */
         .vps-panel {
             background: linear-gradient(145deg, #090915, #140526);
             border-radius: 14px;
             padding: 15px;
             border: 1px solid #bc00dd;
             margin-bottom: 15px;
-        }
-
-        .vps-panel h3 {
-            color: #bc00dd;
-            font-size: 15px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
         }
 
         .vps-form {
@@ -170,8 +152,6 @@
             padding: 12px;
             border-radius: 8px;
             color: white;
-            font-size: 13px;
-            width: 100%;
         }
 
         .vps-form button {
@@ -182,23 +162,14 @@
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 14px;
-            box-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
-            text-transform: uppercase;
-            margin-top: 5px;
         }
 
-        /* 📊 MOBILE LAYOUT GRID FOR STATS & MONITORS */
-        .main-layout {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
+        /* 📊 STATS */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+            margin-bottom: 15px;
         }
 
         .stat-box {
@@ -209,19 +180,10 @@
             text-align: center;
         }
 
-        .stat-title {
-            font-size: 11px;
-            color: #8a99ad;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
+        .stat-title { font-size: 11px; color: #8a99ad; text-transform: uppercase; }
+        .stat-value { font-size: 18px; font-weight: bold; margin-top: 5px; }
 
-        .stat-value {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /* 🟣 NEON SYSTEM MONITORS (CPU, STORAGE, MEMORY, NETWORK) */
+        /* MONITORS */
         .monitor-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -234,69 +196,28 @@
             border-radius: 14px;
             padding: 15px 10px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(188, 0, 221, 0.05);
         }
 
-        .progress-circle {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            background: conic-gradient(#ff007f 76%, #1a1a33 0);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px auto;
+        .progress-bar-neon {
+            width: 100%;
+            background: #1a1a33;
+            height: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
         }
 
-        .progress-circle.storage { background: conic-gradient(#bc00dd 82%, #1a1a33 0); }
-        .progress-circle.memory { background: conic-gradient(#00ffcc 68%, #1a1a33 0); }
+        .progress-fill { height: 100%; background: #ff007f; width: 76%; }
+        .progress-fill.storage { background: #bc00dd; width: 82%; }
+        .progress-fill.memory { background: #00ffcc; width: 68%; }
 
-        .circle-inner {
-            width: 61px;
-            height: 61px;
-            background: #06060f;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .stat-details {
-            font-size: 11px;
-            color: #8a99ad;
-        }
-
-        .network-card {
-            grid-column: span 2;
-            background: #06060f;
-            border: 1px solid #00ffcc;
-            border-radius: 14px;
-            padding: 12px 15px;
-        }
-
-        .network-speeds {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 5px;
-        }
-
-        .net-line { font-size: 13px; font-weight: bold; }
-
-        /* 🔔 NOTIFICATIONS PANEL */
+        /* NOTIFICATIONS */
         .notifications-panel {
             background: #090915;
             border-radius: 14px;
             padding: 15px;
             border: 1px solid #ff007f;
-        }
-
-        .notifications-panel h3 {
-            color: #ff007f;
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-top: 15px;
         }
 
         .notification-item {
@@ -306,18 +227,9 @@
             margin-top: 8px;
             border-left: 4px solid #ff007f;
             font-size: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
         }
 
-        .noti-time {
-            font-size: 10px;
-            color: #8a99ad;
-            align-self: flex-end;
-        }
-
-        /* 📱 BOTTOM NAVIGATION MENU (HOME & SETTINGS) */
+        /* NAV */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -327,8 +239,7 @@
             border-top: 2px solid #bc00dd;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
-            z-index: 999;
+            padding: 12px 0;
         }
 
         .nav-item {
@@ -337,34 +248,81 @@
             color: #8a99ad;
             font-size: 12px;
             font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 33%;
         }
-
-        .nav-item.active {
-            color: #00ffcc;
-            text-shadow: 0 0 8px rgba(0, 255, 204, 0.5);
-        }
-
-        .nav-icon {
-            font-size: 20px;
-            margin-bottom: 2px;
-        }
+        .nav-item.active { color: #00ffcc; }
     </style>
 </head>
 <body>
 
-    <!-- 🔒 DAAQADA PIN SECURITY -->
+    <!-- 🔒 LOGIN OVERLAY -->
     <div id="login-overlay">
         <div class="login-box">
-            <h2 style="color: #ff007f; margin-bottom: 5px; text-shadow: 0 0 5px #ff007f;">SIGNAL AI LOCK</h2>
+            <h2 style="color: #ff007f; margin-bottom: 5px;">SIGNAL AI SECURITY</h2>
             <p style="color: #8a99ad; margin-bottom: 15px; font-size: 12px;">Geli password-ka si aad u gasho</p>
-            <input type="password" id="pass-input" placeholder="••••••••">
+            <input type="password" id="pass-input" placeholder="Geli Password-ka">
             <button onclick="checkPassword()">OPEN DASHBOARD</button>
             <div id="error-text" style="color: #ff0055; margin-top: 10px; display: none; font-size: 12px;">Password-ku waa khalad!</div>
         </div>
     </div>
 
+    <!-- MAIN DASHBOARD CONTENT -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item">BTC/USD: <span class="up">$94,250.00 (+2.4%)</span></div>
+            <div class="ticker-item">XAU/USD (Gold): <span class="up">$2,650.00 (+1.1%)</span></div>
+            <div class="ticker-item">EUR/USD: <span class="down">1.0850 (-0.12%)</span></div>
+        </div>
+    </div>
+
+    <div class="header-container">
+        <h1>SIGNAL AI</h1>
+        <div class="digital-clock">
+            <div class="clock-time">10:30 PM</div>
+        </div>
+    </div>
+
+    <div class="vps-panel">
+        <h3 style="color: #bc00dd; font-size: 14px; margin-bottom: 10px;">🖥️ VPS CONNECTION & MT5 SETUP</h3>
+        <div class="vps-form">
+            <input type="text" placeholder="VPS IP Address">
+            <input type="text" placeholder="MT5 Login ID">
+            <input type="password" placeholder="MT5 Password">
+            <button type="button">Connect Agent</button>
+        </div>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-box"><div class="stat-title">Today's Profit</div><div class="stat-value" style="color: #00ffcc;">+$1,842.30</div></div>
+        <div class="stat-box"><div class="stat-title">Active Signals</div><div class="stat-value">16</div></div>
+        <div class="stat-box"><div class="stat-title">AI Win Rate</div><div class="stat-value" style="color: #bc00dd;">71.4%</div></div>
+        <div class="stat-box"><div class="stat-title">Account Balance</div><div class="stat-value">$54,208.11</div></div>
+    </div>
+
+    <div class="monitor-grid">
+        <div class="monitor-card">
+            <div class="stat-title">CPU Usage</div>
+            <div class="progress-bar-neon"><div class="progress-fill"></div></div>
+            <div class="stat-value" style="font-size: 15px; color: #ff007f;">76%</div>
+        </div>
+        <div class="monitor-card">
+            <div class="stat-title">Storage</div>
+            <div class="progress-bar-neon"><div class="progress-fill storage"></div></div>
+            <div class="stat-value" style="font-size: 15px; color: #bc00dd;">82%</div>
+        </div>
+    </div>
+
+    <div class="notifications-panel">
+        <h3>🔔 AI Agent Notifications</h3>
+        <div class="notification-item">🤖 System Update: Connection to VPS Established.</div>
+        <div class="notification-item">📈 New Signal: BUY XAU/USD entered at $2,645.</div>
+    </div>
+
+    <div class="bottom-nav">
+        <button class="nav-item active">🏠 Home</button>
+        <button class="nav-item">⚙️ Settings</button>
+    </div>
+
+    <!-- 🔒 SECURE LOGIN SCRIPT -->
+    <script>
+        function checkPassword() {
+            var passwordInput = document.getElementById("pass-input").value;
