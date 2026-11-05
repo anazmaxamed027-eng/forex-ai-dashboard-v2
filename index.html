@@ -3,83 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signal AI - Forex Dashboard</title>
+    <title>Signal AI - Cyber Forex Dashboard</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-     body { background-color: #0b0c10; color: #ffffff; padding: 20px; }
-        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0b0c10; display: flex; justify-content: center; align-items: center; z-index: 9999; }
-        .login-box { background: #151922; padding: 40px; border-radius: 12px; border: 1px solid #45f3ff; text-align: center; }
-        .login-box input { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 6px; border: 1px solid #232936; background: #1f2833; color: white; text-align: center; }
-        .login-box button { background: #45f3ff; color: #0b0c10; border: none; padding: 12px 30px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; }
-        .error-msg { color: #ff3366; margin-top: 10px; display: none; }
-        .ticker-wrap { width: 100%; background: #1f2833; overflow: hidden; padding: 10px 0; border-radius: 8px; margin-bottom: 20px; border: 1px solid #45f3ff; }
-        .ticker { display: flex; white-space: nowrap; animation: ticker 25s linear infinite; }
-        .ticker-item { padding: 0 2rem; font-size: 14px; font-weight: bold; }
-        @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-        .header { margin-bottom: 30px; }
-        .logo { font-size: 24px; font-weight: bold; color: #45f3ff; }
-        .dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .card { background: #151922; border-radius: 12px; padding: 20px; border: 1px solid #232936; }
-        .card-title { font-size: 12px; color: #8a99ad; text-transform: uppercase; margin-bottom: 10px; }
-        .card-value { font-size: 24px; font-weight: bold; }
-        .vps-panel { grid-column: span 4; background: linear-gradient(135deg, #1f1c2c, #928dab); border: 1px solid #45f3ff; }
-        .vps-form { display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; }
-        .vps-form input { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 10px 15px; border-radius: 6px; color: white; flex: 1; min-width: 200px; }
-        .vps-form button { background: #45f3ff; color: #0b0c10; border: none; padding: 10px 25px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #030308;
+            color: #ffffff;
+            padding: 12px;
+            padding-bottom: 90px; /* Booska bottom menu-ka hoose */
+        }
+
+        /* 🔒 SYSTEM SECURITY LOCK (PASSWORD) */
+        #login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #030308;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .login-box {
+            background: #090915;
+            padding: 30px 20px;
+            border-radius: 16px;
+            border: 2px solid #ff007f;
+            text-align: center;
+            box-shadow: 0px 0px 20px rgba(255, 0, 127, 0.4);
+            width: 90%;
+            max-width: 350px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #bc00dd;
+            background: #121226;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .login-box button {
+            background: linear-gradient(90deg, #ff007f, #bc00dd);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+
+        /* 📈 LIVE TICKER BAR */
+        .ticker-wrap {
+            width: 100%;
+            background: #090915;
+            overflow: hidden;
+            padding: 8px 0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #bc00dd;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 25s linear infinite;
+        }
+
+        .ticker-item {
+            padding: 0 1.5rem;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .up { color: #00ffcc; }
+        .down { color: #ff0055; }
+
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* 🟣 HEADER & CYBER CLOCK */
+        .header-container {
+            background: #090915;
+            padding: 15px;
+            border-radius: 14px;
+            border: 1px solid #ff007f;
+            margin-bottom: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.1);
+        }
+
+        .logo-section h1 {
+            font-size: 24px;
+            color: #ff007f;
+            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .digital-clock {
+            background: #111126;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #bc00dd;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .clock-time {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        .clock-date {
+            font-size: 11px;
+            color: #8a99ad;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        /* 🖥️ VPS & MT5 CONFIGURATION PANEL */
+        .vps-panel {
+            background: linear-gradient(145deg, #090915, #140526);
+            border-radius: 14px;
+            padding: 15px;
+            border: 1px solid #bc00dd;
+            margin-bottom: 15px;
+        }
+
+        .vps-panel h3 {
+            color: #bc00dd;
+            font-size: 15px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .vps-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .vps-form input {
+            background: #0c0c1f;
+            border: 1px solid #232342;
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            font-size: 13px;
+            width: 100%;
+        }
+
+        .vps-form button {
+            background: #00ffcc;
+            color: #030308;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* 📊 MOBILE LAYOUT GRID FOR STATS & MONITORS */
+        .main-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .stat-box {
+            background: #090915;
+            padding: 15px 10px;
+            border-radius: 12px;
+            border: 1px solid #232342;
+            text-align: center;
+        }
+
+        .stat-title {
+            font-size: 11px;
+            color: #8a99ad;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* 🟣 NEON SYSTEM MONITORS (CPU, STORAGE, MEMORY, NETWORK) */
+        .monitor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .monitor-card {
+            background: #06060f;
+            border: 1px solid #bc00dd;
+            border-radius: 14px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(188, 0, 221, 0.05);
+        }
+
+        .progress-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: conic-gradient(#ff007f 76%, #1a1a33 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px auto;
+        }
+
+        .progress-circle.storage { background: conic-gradient(#bc00dd 82%, #1a1a33 0); }
+        .progress-circle.memory { background: conic-gradient(#00ffcc 68%, #1a1a33 0); }
+
+        .circle-inner {
+            width: 61px;
+            height: 61px;
+            background: #06060f;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .stat-details {
+            font-size: 11px;
+            color: #8a99ad;
+        }
+
+        .network-card {
+            grid-column: span 2;
+            background: #06060f;
+            border: 1px solid #00ffcc;
+            border-radius: 14px;
+            padding: 12px 15px;
+        }
+
+        .network-speeds {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5px;
+        }
+
+        .net-line { font-size: 13px; font-weight: bold; }
+
+        /* 🔔 NOTIFICATIONS PANEL */
+        .notifications-panel {
+            background: #090915;
+            border-radius: 14px;
+            padding: 15px;
+            border: 1px solid #ff007f;
+        }
+
+        .notifications-panel h3 {
+            color: #ff007f;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .notification-item {
+            background: #111126;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 8px;
+            border-left: 4px solid #ff007f;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .noti-time {
+            font-size: 10px;
+            color: #8a99ad;
+            align-self: flex-end;
+        }
+
+        /* 📱 BOTTOM NAVIGATION MENU (HOME & SETTINGS) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #090915;
+            border-top: 2px solid #bc00dd;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 999;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            color: #8a99ad;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 33%;
+        }
+
+        .nav-item.active {
+            color: #00ffcc;
+            text-shadow: 0 0 8px rgba(0, 255, 204, 0.5);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- 🔒 DAAQADA PIN SECURITY -->
     <div id="login-overlay">
         <div class="login-box">
-            <h2>Signal AI Security</h2>
-            <p style="color: #8a99ad; margin-bottom: 15px;">Geli password-ka si aad u gasho Dashboard-ka</p>
-            <input type="password" id="pass-input" placeholder="Password-ka Geli">
-            <button onclick="checkPassword()">Open Dashboard</button>
-            <div class="error-msg" id="error-text">Password-ku waa khalad!</div>
+            <h2 style="color: #ff007f; margin-bottom: 5px; text-shadow: 0 0 5px #ff007f;">SIGNAL AI LOCK</h2>
+            <p style="color: #8a99ad; margin-bottom: 15px; font-size: 12px;">Geli password-ka si aad u gasho</p>
+            <input type="password" id="pass-input" placeholder="••••••••">
+            <button onclick="checkPassword()">OPEN DASHBOARD</button>
+            <div id="error-text" style="color: #ff0055; margin-top: 10px; display: none; font-size: 12px;">Password-ku waa khalad!</div>
         </div>
     </div>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker-item" style="color: #00ffcc;">BTC/USD: $94,250.00 (+2.4%)</div>
-            <div class="ticker-item" style="color: #00ffcc;">XAU/USD (Gold): $2,650.00 (+1.1%)</div>
-            <div class="ticker-item" style="color: #ff3366;">EUR/USD: 1.0850 (-0.12%)</div>
-        </div>
-    </div>
-
-    <div class="header">
-        <div class="logo">SIGNAL AI</div>
-        <p style="color: #8a99ad;">Welcome to your Forex AI Agent Dashboard.</p>
-    </div>
-
-    <div class="dashboard-grid">
-        <div class="card vps-panel">
-            <h3>🖥️ VPS Connection & AI Agent Setup</h3>
-            <div class="vps-form">
-                <input type="text" placeholder="VPS IP Address">
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
-                <button type="button">Connect Agent</button>
-            </div>
-        </div>
-
-        <div class="card"><div class="card-title">Today's Profit</div><div class="card-value" style="color: #00ffcc;">+$1,842.30</div></div>
-        <div class="card"><div class="card-title">Active AI Signals</div><div class="card-value">16</div></div>
-        <div class="card"><div class="card-title">AI Win Rate</div><div class="card-value" style="color: #45f3ff;">71.4%</div></div>
-        <div class="card"><div class="card-title">Account Balance</div><div class="card-value">$54,208.11</div></div>
-    </div>
-
-    <script>
-        function checkPassword() {
-            var passwordInput = document.getElementById("pass-input").value;
-            if (passwordInput === "pio54321") { 
-                document.getElementById("login-overlay").style.display = "none";
-                document.body.style.display = "block";
-            } else {
-                document.getElementById("error-text").style.display = "block";
-            }
-        }
-    </script>
-</body>
-</html>
